@@ -5,7 +5,7 @@
 #    schema-evolution-manager scripts
 #
 # == Usage
-#  sem-dist [--artifact_name <tag> --tag <tag>]
+#  gsem-dist [--artifact_name <tag> --tag <tag>]
 #
 #    name
 #      Optional artifact_name - defaults to the current directory name. Used in the
@@ -16,14 +16,14 @@
 #      If not specified, we create a new tag.
 #
 # == Example
-#  sem-dist
+#  gsem-dist
 #    Creates a new tag and generates the distribution file
 #
-#  sem-dist --tag 0.0.1
+#  gsem-dist --tag 0.0.1
 #    Creates a distribution file for the specified tag
 #
 
-load File.join(File.dirname(__FILE__), 'sem-config')
+load File.join(File.dirname(__FILE__), 'gsem-config')
 SchemaEvolutionManager::Library.set_verbose(true)
 
 args = SchemaEvolutionManager::Args.from_stdin(:optional => ['artifact_name', 'tag'])

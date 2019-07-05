@@ -151,27 +151,27 @@ version.
 ### Initialization
 
     git init /tmp/sample
-    sem-init --dir /tmp/sample --url postgresql://postgres@localhost/sample
+    gsem-init --dir /tmp/sample --url postgresql://postgres@localhost/sample
 
 ### Writing your first sql script
 
     cd /tmp/sample
     echo "create table tmp_table (id integer)" > new.sql
-    sem-add ./new.sql
+    gsem-add ./new.sql
 
 ### Applying changes to your local database:
 
     cd /tmp/sample
     createdb sample
-    sem-apply --url postgresql://postgres@localhost/sample
+    gsem-apply --url postgresql://postgres@localhost/sample
 
 Note that you can also pass in the username, db host, and db name explicitly:
 
-    sem-apply --host localhost --name sample --user postgres
+    gsem-apply --host localhost --name sample --user postgres
 
 Similarly, for non-standard setups, you can optionally pass in the port
 
-    sem-apply --host localhost --port 5433 --name sample --user postgres
+    gsem-apply --host localhost --port 5433 --name sample --user postgres
 
 ### When you are happy with your change, commit:
 
@@ -180,14 +180,14 @@ Similarly, for non-standard setups, you can optionally pass in the port
 ## Publishing a Release
 
     cd /tmp/sample
-    sem-dist
+    gsem-dist
 
-By default, the sem-dist script will create the next micro git tag,
+By default, the gsem-dist script will create the next micro git tag,
 and use that tag in the file name.
 
 If you already have a tag:
 
-    sem-dist --tag 0.0.2
+    gsem-dist --tag 0.0.2
 
 You will now have a single artifict -
 /tmp/sample/dist/sample-0.0.2.tar.gz - that you can manage in standard
@@ -205,7 +205,7 @@ deploy process.
 
 ### Do a dry run
 
-    sem-apply --url postgresql://postgres@localhost/sample --dry_run
+    gsem-apply --url postgresql://postgres@localhost/sample --dry_run
 
 You will likely see a number of create table statements (see data model section below). You should also see:
 
@@ -222,7 +222,7 @@ There are two recommended ways in which to pass user passwords to psql:
     file](http://www.postgresql.org/docs/9.4/static/libpq-pgpass.html)
     with the appropriate credentials</li>
 
- 2. Specify a [--password] flag when running sem-apply. You will
+ 2. Specify a [--password] flag when running gsem-apply. You will
     then be prompted to enter your password once. sem will create a
     temporary file to store your password, using that file during the
     duration of the command and ensuring the file is deleted after sem
@@ -230,11 +230,11 @@ There are two recommended ways in which to pass user passwords to psql:
 
     Example:
 
-        sem-apply --url postgresql://postgres@localhost/sample --password
+        gsem-apply --url postgresql://postgres@localhost/sample --password
 
 ### Apply the changes
 
-    sem-apply --url postgresql://postgres@localhost/sample
+    gsem-apply --url postgresql://postgres@localhost/sample
 
 You will see:
 
@@ -243,7 +243,7 @@ You will see:
 
 Attempt to apply again:
 
-    sem-apply --url postgresql://postgres@localhost/sample
+    gsem-apply --url postgresql://postgres@localhost/sample
 
 You will see:
 
@@ -254,11 +254,11 @@ You will see:
 
 If you have an existing database, and you want to start using schema
 evolution manager, we support the notion of creating a baseline. The
-sem-baseline script will record that all of the scripts have been
+gsem-baseline script will record that all of the scripts have been
 applied to the database, without actually applying them. From this
 point forward, only new scripts will be applied to the database.
 
-    sem-baseline --url postgresql://postgres@localhost/sample
+    gsem-baseline --url postgresql://postgres@localhost/sample
 
 
 ## Data Model
@@ -304,11 +304,11 @@ and utilities in practice.
 
 ## Command Line Utilities
 
-- sem-init: Initialize a git repository for sem support
-- sem-add: Adds a database upgrade script
-- sem-dist: Create a distribution tar.gz file containing schema upgrade scripts
-- sem-apply: Apply any deltas from a distribution tarball to a particular database
-- sem-baseline: Add any migration scripts to the schema tables without actually applying them. See [Migrating](#migrating)
+- gsem-init: Initialize a git repository for sem support
+- gsem-add: Adds a database upgrade script
+- gsem-dist: Create a distribution tar.gz file containing schema upgrade scripts
+- gsem-apply: Apply any deltas from a distribution tarball to a particular database
+- gsem-baseline: Add any migration scripts to the schema tables without actually applying them. See [Migrating](#migrating)
 
 
 ## Attributes supported in sql migration scripts
@@ -345,10 +345,10 @@ For these cases, sem provides a 'baseline' command.
 
 Current workflow:
 
-  1. sem-add your current schema
+  1. gsem-add your current schema
     1. Either via a database dump
-    1. Or by sem-adding existing DB scripts
-  1. Use sem-baseline to bootstrap the sem tables and add existing schema files to sem's migration table without actually applying them
+    1. Or by gsem-adding existing DB scripts
+  1. Use gsem-baseline to bootstrap the sem tables and add existing schema files to sem's migration table without actually applying them
 
 ## License
 

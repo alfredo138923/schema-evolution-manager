@@ -119,7 +119,7 @@ module SchemaEvolutionManager
     end
 
     def Db.password_to_tempfile(contents)
-      file = Tempfile.new("sem-db")
+      file = Tempfile.new("gsem-db")
       file.write(contents)
       file.rewind
       file.path

@@ -3,17 +3,17 @@
 #    sorted by the timestamp assigned at the time the script was added
 #
 # == Usage
-#  sem-apply --url <database url>
+#  gsem-apply --url <database url>
 #  or
-#  sem-apply --host <database host> --user <db user> --name <db name>
+#  gsem-apply --host <database host> --user <db user> --name <db name>
 #
 # == Examples
-#  sem-apply --url postgresql://postgres@localhost:port/sample
-#  sem-apply --host localhost --user web --name test
+#  gsem-apply --url postgresql://postgres@localhost:port/sample
+#  gsem-apply --host localhost --user web --name test
 #
 require 'tempfile'
 
-load File.join(File.dirname(__FILE__), 'sem-config')
+load File.join(File.dirname(__FILE__), 'gsem-config')
 
 args = SchemaEvolutionManager::Args.from_stdin(:optional => %w(url host port name user dry_run password))
 

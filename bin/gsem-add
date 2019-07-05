@@ -2,13 +2,13 @@
 # == Adds a database upgrade script to this repository.
 #
 # == Usage
-#  sem-add <path>
+#  gsem-add <path>
 #
 # == Example
-#  sem-add ./new-script.sql
+#  gsem-add ./new-script.sql
 #
 
-load File.join(File.dirname(__FILE__), 'sem-config')
+load File.join(File.dirname(__FILE__), 'gsem-config')
 
 file = ARGV.shift
 if file.to_s.strip == ""

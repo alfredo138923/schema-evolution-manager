@@ -1,9 +1,9 @@
 load File.join(File.dirname(__FILE__), '../../init.rb')
 
-describe "sem-info" do
+describe "gsem-info" do
 
   it "can display latest tag" do
-    path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/sem-info")
+    path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/gsem-info")
     TestUtils.in_test_repo_with_commit do
       SchemaEvolutionManager::Library.git_create_tag("0.0.5")
       `#{path} tag latest`.strip.should == "0.0.5"
@@ -21,7 +21,7 @@ describe "sem-info" do
   end
   
   it "tag exists" do
-    path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/sem-info")
+    path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/gsem-info")
     TestUtils.in_test_repo_with_commit do
       SchemaEvolutionManager::Library.git_create_tag("0.0.5")
       `#{path} tag exists 9.1.2`.strip.should == "false"
@@ -30,7 +30,7 @@ describe "sem-info" do
   end
 
   it "version" do
-    path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/sem-info")
+    path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/gsem-info")
     TestUtils.in_test_repo_with_commit do
       `#{path} version`.strip.should == SchemaEvolutionManager::SemVersion::VERSION
     end

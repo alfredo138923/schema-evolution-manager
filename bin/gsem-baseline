@@ -1,19 +1,19 @@
 #!/usr/bin/env ruby
-# == Makes sure that sem is bootstapped, and then adds all existing scripts to the sem-database without applying
+# == Makes sure that sem is bootstapped, and then adds all existing scripts to the gsem-database without applying
 #    Useful for migration to sem
 #
 # == Usage
-#  sem-baseline --url <database url>
+#  gsem-baseline --url <database url>
 #  or
-#  sem-baseline --host <database host> --user <db user> --name <db name>
+#  gsem-baseline --host <database host> --user <db user> --name <db name>
 #
 # == Examples
-#  sem-baseline --url postgresql://postgres@localhost/sample
-#  sem-apply --host localhost --user web --name test
+#  gsem-baseline --url postgresql://postgres@localhost/sample
+#  gsem-apply --host localhost --user web --name test
 #
 
 
-load File.join(File.dirname(__FILE__), 'sem-config')
+load File.join(File.dirname(__FILE__), 'gsem-config')
 
 args = SchemaEvolutionManager::Args.from_stdin(:optional => %w(url host port name user dry_run))
 

@@ -70,7 +70,7 @@ end
     path = File.join(dir, filename)
     if File.file?(path)
       SchemaEvolutionManager::Library.system_or_error("cp %s %s" % [path, this_dir])
-      if dir == "bin" && filename != "sem-config"
+      if dir == "bin" && filename != "gsem-config"
         SchemaEvolutionManager::Library.system_or_error("chmod +x %s/%s" % [this_dir, filename])
       end
     end
@@ -87,8 +87,8 @@ Dir.chdir(bin_dir) do
   end
 end
 
-# Overrwrite bin/sem-config with proper location of lib dir
-init_file = File.join(version_dir, "bin/sem-config")
+# Overrwrite bin/gsem-config with proper location of lib dir
+init_file = File.join(version_dir, "bin/gsem-config")
 SchemaEvolutionManager::Preconditions.check_state(File.exists?(init_file), "Init file[%s] not found" % init_file)
 File.open(init_file, "w") do |out|
   out << "load File.join('%s')\n" % File.join(version_dir, 'lib/schema-evolution-manager.rb')
@@ -100,7 +100,7 @@ puts "  - lib dir: %s" % lib_dir
 puts "  - bin dir: %s" % bin_dir
 puts ""
 
-found = `which sem-add`.strip
+found = `which gsem-add`.strip
 if found == ""
   puts "Recommend adding the bin directory to your path"
   puts "  export PATH=%s:$PATH" % bin_dir

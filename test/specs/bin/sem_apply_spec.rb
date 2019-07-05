@@ -3,7 +3,7 @@ load File.join(File.dirname(__FILE__), '../../init.rb')
 describe "Apply" do
 
   def with_script_setup(&block)
-    add_path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/sem-add")
+    add_path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/gsem-add")
     random_number = rand(100000)
 
     TestUtils.with_bootstrapped_db do |db|
@@ -20,7 +20,7 @@ describe "Apply" do
 
   it "does not apply sql scripts with dry_run" do
     with_script_setup do |db|
-      apply_path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/sem-apply")
+      apply_path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/gsem-apply")
       SchemaEvolutionManager::Library.system_or_error("#{apply_path} --url #{db.url} --dry_run")
       lambda {
         db.psql_command("select count(*) from tmp")
@@ -30,7 +30,7 @@ describe "Apply" do
 
   it "applies sql scripts without dry_run" do
     with_script_setup do |db|
-      apply_path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/sem-apply")
+      apply_path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/gsem-apply")
       SchemaEvolutionManager::Library.system_or_error("#{apply_path} --url #{db.url}")
       db.psql_command("select count(*) from tmp").to_i.should == 1
     end

@@ -3,19 +3,19 @@
 #    by schema-evolution-manager
 #
 # == Usage
-#  sem-init --dir <dir> --url <url>
+#  gsem-init --dir <dir> --url <url>
 #  or
-#  sem-init --dir <dir> --host <database host> --user <db user> --name <db name>
+#  gsem-init --dir <dir> --host <database host> --user <db user> --name <db name>
 #
 #   dir: The directory containing a git repository that will contain the schema evolution files
 #   url: The connection string for the psql database
 #
 # == Example
 #  git init /tmp/example_repo
-#  bin/sem-init --dir /tmp/example_repo --url postgresql://username@localhost/sample
+#  bin/gsem-init --dir /tmp/example_repo --url postgresql://username@localhost/sample
 #
 
-load File.join(File.dirname(__FILE__), 'sem-config')
+load File.join(File.dirname(__FILE__), 'gsem-config')
 SchemaEvolutionManager::Library.set_verbose(true)
 
 args = SchemaEvolutionManager::Args.from_stdin(:required => %w(dir), :optional => %w(url host port name user))
@@ -45,7 +45,7 @@ SchemaEvolutionManager::Preconditions.check_state(File.directory?(template_dir),
 
 subs = {
   "url" => db.url,
-  "add_script_path" => File.join(SchemaEvolutionManager::Library.base_dir, "bin/sem-add")
+  "add_script_path" => File.join(SchemaEvolutionManager::Library.base_dir, "bin/gsem-add")
 }
 
 puts "chdir %s" % args.dir

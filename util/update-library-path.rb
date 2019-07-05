@@ -24,7 +24,7 @@ end
 
 tmp = []
 IO.readlines(path).each do |l|
-  if l.strip == "load File.join(File.dirname(__FILE__), 'sem-config')"
+  if l.strip == "load File.join(File.dirname(__FILE__), 'gsem-config')"
     tmp << "load File.join('#{lib}')\n"
   else
     tmp << l

@@ -18,7 +18,7 @@ To add a new database migration script:
 
 To upgrade your local postgresql database:
 
-  sem-apply --host localhost --name sample --user postgres
+  gsem-apply --host localhost --name sample --user postgres
 
 or use the wrapper script:
 

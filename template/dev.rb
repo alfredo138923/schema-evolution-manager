@@ -6,7 +6,7 @@
 #
 
 Dir.chdir(File.dirname($0)) {
-  command = "sem-apply --url %%url%%"
+  command = "gsem-apply --url %%url%%"
   puts command
   exec(command)
 }

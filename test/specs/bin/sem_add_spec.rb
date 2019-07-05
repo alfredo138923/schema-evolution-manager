@@ -3,7 +3,7 @@ load File.join(File.dirname(__FILE__), '../../init.rb')
 describe "Add" do
 
   it "can add a file" do
-    path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/sem-add")
+    path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/gsem-add")
     TestUtils.in_test_repo do
       File.open("new.sql", "w") { |out| out << "select 1" }
       SchemaEvolutionManager::Scripts.all("scripts").size.should == 0
@@ -13,7 +13,7 @@ describe "Add" do
   end
 
   it "adding multiple files quickly results in unique filenames" do
-    path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/sem-add")
+    path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/gsem-add")
     TestUtils.in_test_repo do
       File.open("new1.sql", "w") { |out| out << "select 1" }
       File.open("new2.sql", "w") { |out| out << "select 1" }

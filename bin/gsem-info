@@ -1,19 +1,19 @@
 #!/usr/bin/env ruby
 # Usage
 #
-#  sem-info command [arg1...]
+#  gsem-info command [arg1...]
 #
-#  sem-info tag exists 1.2.3
+#  gsem-info tag exists 1.2.3
 #    Returns true if the specified tag exists,
 #    false otherwise
 #
-#  sem-info tag latest
+#  gsem-info tag latest
 #    Display the latest tag
 #
-#  sem-info version
+#  gsem-info version
 #    Display the version of schema-evolution-manager
 #
-#  sem-info tag next [major|minor|micro]
+#  gsem-info tag next [major|minor|micro]
 #    Output information on the next tag. Defaults to micro
 #    version increment from latest tag
 #
@@ -24,7 +24,7 @@
 #   needed information (like the next minor tag)
 #
 
-load File.join(File.dirname(__FILE__), 'sem-config')
+load File.join(File.dirname(__FILE__), 'gsem-config')
 
 command = ARGV.shift.to_s.strip
 

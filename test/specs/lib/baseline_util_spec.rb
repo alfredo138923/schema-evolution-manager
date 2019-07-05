@@ -3,7 +3,7 @@ load File.join(File.dirname(__FILE__), '../../init.rb')
 describe SchemaEvolutionManager::BaselineUtil do
 
   def with_sql_script(sql)
-    add = File.join(SchemaEvolutionManager::Library.base_dir, "bin/sem-add")
+    add = File.join(SchemaEvolutionManager::Library.base_dir, "bin/gsem-add")
     TestUtils.with_bootstrapped_db do |db|
       TestUtils.in_test_repo do
         File.open("new.sql", "w") { |out| out << sql }

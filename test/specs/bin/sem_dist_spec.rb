@@ -3,8 +3,8 @@ load File.join(File.dirname(__FILE__), '../../init.rb')
 describe "Dist" do
 
   it "can create a distribution" do
-    add_path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/sem-add")
-    dist_path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/sem-dist")
+    add_path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/gsem-add")
+    dist_path = File.join(SchemaEvolutionManager::Library.base_dir, "bin/gsem-dist")
     random_string = "random_string_%s" % [rand(100000)]
 
     TestUtils.in_test_repo do
