@@ -127,7 +127,7 @@ There are two ways to install schema evolution manager:
 
 1. Direct install using ruby (no dependency on ruby gems)
 
-        git clone git://github.com/mbryzek/schema-evolution-manager.git
+        git clone https://github.com/alfredo138923/schema-evolution-manager.git
         cd schema-evolution-manager
         git checkout 0.9.41
         ruby ./configure.rb
